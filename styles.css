@@ -1,13 +1,3 @@
-:root {
-  --cream: #f9f4ee;
-  --peach: #f4d6c8;
-  --terracotta: #d77a61;
-  --sage: #7a8f7a;
-  --navy: #2f3a44;
-  --white: #ffffff;
-  --shadow: 0 12px 30px rgba(47, 58, 68, 0.12);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -15,8 +5,8 @@
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  color: var(--navy);
-  background: var(--cream);
+  color: var(--text);
+  background: var(--background);
   line-height: 1.6;
 }
 
@@ -40,7 +30,7 @@ img {
 }
 
 .section.alt {
-  background: var(--white);
+  background: var(--surface);
 }
 
 .section-heading {
@@ -88,13 +78,13 @@ img {
   justify-content: center;
   padding: 12px 20px;
   border-radius: 999px;
-  background: var(--terracotta);
-  color: var(--white);
+  background: var(--primary);
+  color: var(--surface);
   font-weight: 600;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 8px 18px rgba(215, 122, 97, 0.3);
+  box-shadow: 0 8px 18px rgba(66, 189, 103, 0.3);
 }
 
 .button:hover {
@@ -103,8 +93,8 @@ img {
 
 .button.ghost {
   background: transparent;
-  color: var(--terracotta);
-  border: 1px solid var(--terracotta);
+  color: var(--primary);
+  border: 1px solid var(--primary);
   box-shadow: none;
 }
 
@@ -138,7 +128,7 @@ img {
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 2px;
-  color: var(--sage);
+  color: var(--primary-dark);
   margin-bottom: 12px;
 }
 
@@ -150,7 +140,7 @@ img {
 }
 
 .hero-card {
-  background: var(--white);
+  background: var(--surface);
   padding: 24px;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -163,7 +153,7 @@ img {
 }
 
 .card {
-  background: var(--white);
+  background: var(--surface);
   border-radius: 18px;
   padding: 24px;
   box-shadow: var(--shadow);
@@ -184,13 +174,13 @@ img {
 }
 
 .price-unit {
-  color: rgba(47, 58, 68, 0.7);
+  color: var(--muted-text);
   margin-top: 0;
 }
 
 .price.featured {
-  border: 2px solid var(--peach);
-  background: #fff7f2;
+  border: 2px solid var(--accent);
+  background: #f1fff6;
 }
 
 .two-column {
@@ -223,7 +213,7 @@ textarea {
   border-radius: 12px;
   border: 1px solid rgba(47, 58, 68, 0.2);
   font: inherit;
-  background: var(--white);
+  background: var(--surface);
 }
 
 .site-footer {
@@ -236,12 +226,12 @@ textarea {
   justify-content: space-between;
   gap: 12px;
   font-size: 0.9rem;
-  color: rgba(47, 58, 68, 0.7);
+  color: var(--muted-text);
 }
 
 .note {
   font-size: 0.95rem;
-  color: rgba(47, 58, 68, 0.7);
+  color: var(--muted-text);
 }
 
 @media (max-width: 720px) {
