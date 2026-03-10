@@ -1,0 +1,37 @@
+---
+alwaysApply: true
+description: Dog sitting website guidelines
+---
+# Dog Sitting Website Practice
+
+## Goals
+- Build a friendly, modern, responsive marketing site for a dog sitting company.
+- Keep the site simple and easy to extend; prioritize clarity over cleverness.
+- Get this site working end-to-end and deployed so anyone can access from web browser
+- Spend as little money as possible (free would be great if that's an option)
+
+## Defaults
+- Use plain HTML/CSS/JS unless the user asks for a framework.
+- Use semantic HTML and accessible components (labels, aria when needed).
+- Browser-first layout; keep sections modular and reusable.
+- Avoid heavy dependencies unless requested.
+- When substantial backend is needed, use Python + FastAPI.
+
+## Content Structure (Single Page)
+- Hero: name, tagline, primary CTA.
+- Services: 3-4 core service cards.
+- Pricing: 2-3 tiers with brief notes.
+- About: short company story and values.
+- Testimonials: 2-3 short quotes.
+- Contact: form + direct contact info + hours.
+
+## Style
+- Warm palette and dog-friendly tone.
+- Consistent spacing scale and typography.
+
+
+## Company Information
+- Name: Expo Premium Petsitting
+- Email: expo.premium.petsitting.com
+- Owners: Josie Machalek and Nicole Kunz
+- Location: Minneapolis Minnesota (Expo apartment)
