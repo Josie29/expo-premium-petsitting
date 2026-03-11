@@ -2,6 +2,12 @@
 
 Simple static site for the dog sitting business.
 
+## Project structure
+- `index.html` - main page
+- `css/` - stylesheets (colors and layout)
+- `assets/` - images and media
+- `js/` - future JavaScript (empty for now)
+
 ## Preview in a browser
 
 Option 1: Open the file directly
