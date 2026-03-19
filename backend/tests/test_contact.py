@@ -1,6 +1,5 @@
 from fastapi.testclient import TestClient
 
-import backend.emailer as emailer
 from backend.main import app
 
 
@@ -12,7 +11,8 @@ def test_contact_success_sends_email(monkeypatch):
         sent["body"] = body
         sent["reply_to"] = reply_to
 
-    monkeypatch.setattr(emailer, "send_email", fake_send_email)
+    # Patch where `send_email` is used (main's bound import), not the emailer module.
+    monkeypatch.setattr("backend.main.send_email", fake_send_email)
 
     client = TestClient(app)
     response = client.post(
@@ -28,7 +28,7 @@ def test_contact_success_sends_email(monkeypatch):
 
 
 def test_contact_rejects_honeypot(monkeypatch):
-    monkeypatch.setattr(emailer, "send_email", lambda *args, **kwargs: None)
+    monkeypatch.setattr("backend.main.send_email", lambda *args, **kwargs: None)
     client = TestClient(app)
 
     response = client.post(

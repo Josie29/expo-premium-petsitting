@@ -12,18 +12,17 @@ Simple static site for the dog sitting business.
 ## Preview in a browser
 
 Option 1: Open the file directly
-- Open `/Users/c915852/Documents/cursor_practice/index.html` in your browser.
+- Open `index.html` from the project root in your browser.
 
 Option 2: Run a local server (recommended)
-1. In a terminal:
-   `cd /Users/c915852/Documents/cursor_practice && python3 -m http.server 8000`
+1. From the project root, in a terminal:
+   `python3 -m http.server 8000`
 2. Visit: `http://localhost:8000`
 
 ## Deploy with GitHub Pages
 
 1. Create a GitHub repo (e.g., `expo-premium-petsitting`).
-2. In your project folder, initialize and push:
-   `cd /Users/c915852/Documents/cursor_practice`
+2. From the project root, initialize and push:
    `git init`
    `git add .`
    `git commit -m "Initial site"`
@@ -40,16 +39,26 @@ Option 2: Run a local server (recommended)
 
 ### Local setup
 1. Create a virtual environment and install dependencies:
-   `cd /Users/c915852/Documents/cursor_practice/backend`
+   `cd backend`
    `python3 -m venv .venv && source .venv/bin/activate`
    `pip install -r requirements.txt`
-2. Configure environment variables:
-   - Copy `backend/env.example` and fill in your SMTP values.
-   - For local use: `export $(cat backend/env.example | xargs)`
-3. Run the API:
-   `uvicorn backend.main:app --host 0.0.0.0 --port 8001`
+2. Configure environment variables (still in `backend/`):
+   - Copy `env.example`, fill in your SMTP values (or edit `env.example` directly for local-only use).
+   - For local use: `export $(cat env.example | xargs)`
+3. From the project root, run the API (venv still active):
+   `cd .. && uvicorn backend.main:app --host 0.0.0.0 --port 8001`
 4. Update the form endpoint in `index.html`:
    - `data-endpoint="http://localhost:8001/contact"`
+
+### Backend tests
+
+Tests import the `backend` package, so run pytest from the **repository root** (parent of `backend/`) with the backend venv activated:
+
+1. `cd backend && source .venv/bin/activate`
+2. `cd ..` (back to the project root)
+3. `python -m pytest backend/tests/`
+
+Alternatively, from `backend/` with the venv active: `PYTHONPATH=.. python -m pytest tests/`
 
 ### Deployment notes
 - Set the same SMTP environment variables on your host.

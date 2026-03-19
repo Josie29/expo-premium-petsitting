@@ -1,5 +1,5 @@
 ---
-description: General development standards — code quality, error handling, docstrings
+description: General development standards — code quality, error handling, docstrings, docs
 alwaysApply: true
 ---
 
@@ -33,3 +33,4 @@ Use a consistent style (e.g. Google or NumPy); match the rest of the codebase. O
 ## 5. Documentation
 
 - Keep the project structure in the README up to date as you make changes.
+- **Use relative paths** in README and other repo documentation (e.g. `backend/`, `index.html`, `cd ..`) rather than machine-specific absolute paths such as `/Users/...`. State the working directory when it matters (project root vs `backend/`, etc.) so instructions work for any clone location.
