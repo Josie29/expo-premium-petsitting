@@ -180,7 +180,12 @@
               <p><strong>Hours:</strong> 7am - 8pm, every day</p>
             </div>
           </div>
-          <form class="card" aria-label="Contact form">
+          <form
+            class="card"
+            aria-label="Contact form"
+            data-contact-form
+            data-endpoint="http://localhost:8001/contact"
+          >
             <label>
               Your name
               <input type="text" name="name" placeholder="Your full name" required />
@@ -193,7 +198,12 @@
               Dog details
               <textarea name="details" rows="4" placeholder="Tell us about your dog and dates" required></textarea>
             </label>
+            <label class="visually-hidden">
+              Company
+              <input type="text" name="company" autocomplete="off" tabindex="-1" />
+            </label>
             <button class="button" type="submit">Request availability</button>
+            <p class="form-status" role="status" aria-live="polite" data-contact-status></p>
           </form>
         </div>
       </section>
@@ -205,5 +215,6 @@
         <p>© 2026 Expo Premium Petsitting. All rights reserved.</p>
       </div>
     </footer>
+    <script src="js/contact.js"></script>
   </body>
 </html>
