@@ -60,6 +60,14 @@ Tests import the `backend` package, so run pytest from the **repository root** (
 
 Alternatively, from `backend/` with the venv active: `PYTHONPATH=.. python -m pytest tests/`
 
+### CI (GitHub)
+
+On GitHub, the workflow `.github/workflows/backend-tests.yml` runs `pytest` on every pull request (and push) targeting `main`. To block merges until tests pass:
+
+1. Repo → **Settings** → **Branches** → **Add branch protection rule** (or edit the rule for `main`).
+2. Enable **Require status checks to pass before merging**.
+3. Search for and select the check named **Backend tests** (or the job name shown on your PR checks).
+
 ### Deployment notes
 - Set the same SMTP environment variables on your host.
 - Set `FRONTEND_ORIGIN` to your public site URL for CORS.
