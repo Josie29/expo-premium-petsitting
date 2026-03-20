@@ -66,7 +66,7 @@ On GitHub, the workflow `.github/workflows/backend-tests.yml` runs `pytest` on e
 
 1. Repo → **Settings** → **Branches** → **Add branch protection rule** (or edit the rule for `main`).
 2. Enable **Require status checks to pass before merging**.
-3. Search for and select the check named **Backend tests** (or the job name shown on your PR checks).
+3. Search for and select the check named **pytest** (the job name from the workflow). GitHub only lists checks after at least one run has **finished** on the repo—open a PR to `main`, push to `main`, or use **Actions** → **Backend tests** → **Run workflow** (requires `workflow_dispatch` in the workflow), then try the settings again.
 
 ### Deployment notes
 - Set the same SMTP environment variables on your host.
