@@ -56,7 +56,7 @@ Tests import the `backend` package, so run pytest from the **repository root** (
 
 1. `cd backend && source .venv/bin/activate`
 2. `cd ..` (back to the project root)
-3. `python -m pytest backend/tests/`
+3. `python -m pytest backend/tests/` (includes `test_contact.py` for the API and `test_emailer.py` for SMTP helpers)
 
 Alternatively, from `backend/` with the venv active: `PYTHONPATH=.. python -m pytest tests/`
 

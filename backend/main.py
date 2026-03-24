@@ -14,6 +14,16 @@ app = FastAPI()
 
 
 def _cors_origins():
+    """Return allowed CORS origins for the API from ``FRONTEND_ORIGIN``.
+
+    Parses a comma-separated list when ``FRONTEND_ORIGIN`` is set; otherwise
+    allows all origins so local setups work without extra configuration.
+
+    Returns:
+        list[str]: Either ``["*"]`` when the env var is empty, or a list of
+            trimmed origin strings (empty segments are dropped).
+
+    """
     raw = os.getenv("FRONTEND_ORIGIN", "").strip()
     if not raw:
         return ["*"]
@@ -29,6 +39,8 @@ app.add_middleware(
 
 
 class ContactRequest(BaseModel):
+    """Validated payload for POST ``/contact`` (public fields plus optional honeypot)."""
+
     name: str = Field(..., min_length=1, max_length=80)
     email: EmailStr
     details: str = Field(..., min_length=1, max_length=2000)
@@ -37,11 +49,34 @@ class ContactRequest(BaseModel):
 
 @app.get("/health")
 def health():
+    """Liveness probe for deploys and monitors.
+
+    Returns:
+        dict[str, str]: ``{"status": "ok"}`` when the process is up.
+
+    """
     return {"status": "ok"}
 
 
 @app.post("/contact")
 def contact(request: ContactRequest):
+    """Accept a contact form submission and email it via configured SMTP.
+
+    Rejects honeypot submissions where ``company`` is non-empty. On success,
+    sends a plain-text message to ``SMTP_TO`` with ``Reply-To`` set to the
+    submitter's email.
+
+    Args:
+        request: Validated name, email, details, and optional bot field.
+
+    Returns:
+        dict[str, str]: ``{"status": "ok"}`` after the message is queued for send.
+
+    Raises:
+        HTTPException: 400 if the honeypot ``company`` field is set (likely bot).
+        HTTPException: 500 if SMTP send fails after configuration appeared valid.
+
+    """
     if request.company:
         raise HTTPException(status_code=400, detail="Invalid submission.")
 
